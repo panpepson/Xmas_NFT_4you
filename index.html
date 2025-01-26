@@ -122,6 +122,8 @@ h1 {
             const numMinted = await contract.methods.numMinted().call();
             const userBalance = await contract.methods.balanceOf(userAddress).call();
 
+console.log(numMinted);
+
             if (numMinted >= 12) {
               document.getElementById('buyInfo').innerHTML = '<b>Bida 🤔 ziom, spóźniłeś się </b>teraz już tylko możesz zdobyć już wymintowane <b>Xenium_2o23_NFT</b> na <a href="https://opensea.io/" target="_blank">https://opensea.io</a>';
             } else if (userBalance > 0) {
@@ -134,7 +136,7 @@ h1 {
 
             document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅 jeden token <b>Xenium_2o23_NFT</b> daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO znajdziesz na jego temat w kontrakcie <a href="https://mumbai.polygonscan.com/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
             } else {
-              document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xenium_2o23_NFT</h1></button>';
+              document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button>';
               document.getElementById('mintButton').addEventListener('click', async () => {
                 try {
                   const result = await contract.methods.mint().send({ from: userAddress });
