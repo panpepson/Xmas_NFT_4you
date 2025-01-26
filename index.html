@@ -122,7 +122,7 @@ h1 {
             const numMinted = await contract.methods.numMinted().call();
             const userBalance = await contract.methods.balanceOf(userAddress).call();
 
-console.log(numMinted);
+//console.log(numMinted);
 
             if (numMinted >= 12) {
               document.getElementById('buyInfo').innerHTML = '<b>Bida 🤔 ziom, spóźniłeś się </b>teraz już tylko możesz zdobyć już wymintowane <b>Xenium_2o23_NFT</b> na <a href="https://opensea.io/" target="_blank">https://opensea.io</a>';
