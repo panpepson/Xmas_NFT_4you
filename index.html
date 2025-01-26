@@ -111,10 +111,10 @@ h1 {
             const userBalance = await contract.methods.balanceOf(userAddress).call();
 
             if (numMinted >= 12) {
-              document.getElementById('buyInfo').innerHTML = '<b>Bida 🤔 ziom, spóźniłeś się </b>teraz już tylko możesz zdobyć już wymintowane <b>Xmas_NFT_4you</b> na <a href="https://opensea.io/" target="_blank">https://opensea.io</a>';
+              document.getElementById('buyInfo').innerHTML = '<b>Bida 🤔 ziom, spóźniłeś się </b>teraz już tylko możesz zdobyć już wymintowane <b>Xmas_NFT_4you</b> na <a href="https://pulsemarket.app/collection/0x9DF4d4eC50132C53D5e4928F2688af26068fa096">https://pulsemarket.app</a>';
             } else if (userBalance > 12) {
 
-            document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅 jeden token <b>Xmas_NFT_4you</b> daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO znajdziesz na jego temat w kontrakcie <a href="https://mumbai.polygonscan.com/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
+            document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅  12 sztul <b>Xmas_NFT_4you</b> więc daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO dot kontraktu znajdziesz tu <a href="https://otter.pulsechain.com/address/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
             } else {
               document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button>';
               document.getElementById('mintButton').addEventListener('click', async () => {
