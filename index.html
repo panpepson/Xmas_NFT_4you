@@ -72,8 +72,10 @@ h1 {
  <div id="buyInfo"></div>
  <button id="saveAndOpenButton">Zapisz token na dysku</button>
 </center>
+
  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       if (typeof window.ethereum !== 'undefined') {
@@ -84,8 +86,7 @@ h1 {
 
           await ethereum.request({
             method: 'wallet_addEthereumChain',
-// zmienic  
-          params: [
+            params: [
               {
                 chainId: '0x171',
                 chainName: 'PulseChain',
@@ -96,45 +97,28 @@ h1 {
                   decimals: 18,
                 },
                 blockExplorerUrls: ['https://otter.PulseChain.com'],
-                //blockExplorerUrls: ['https://explorer.matic.network/'],
               },
             ],
          });
 
           const networkId = await web3.eth.net.getId();
           if (networkId === 369 ) {
-
-
           const contractAddress = '0x9DF4d4eC50132C53D5e4928F2688af26068fa096';
-          
-
- const contract = new web3.eth.Contract(contractABI, contractAddress);
-
+         const contract = new web3.eth.Contract(contractABI, contractAddress);
             const accounts = await web3.eth.getAccounts();
             const userAddress = accounts[0];
-
             document.getElementById('connectButton').innerHTML = `Jesteś zalogowany jako: <br><b>${userAddress}</b>`;
-
             const balance = await web3.eth.getBalance(userAddress);
             const formattedBalance = web3.utils.fromWei(balance, 'ether');
             document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
-
             const numMinted = await contract.methods.numMinted().call();
             const userBalance = await contract.methods.balanceOf(userAddress).call();
 
-//console.log(numMinted);
-
             if (numMinted >= 12) {
-              document.getElementById('buyInfo').innerHTML = '<b>Bida 🤔 ziom, spóźniłeś się </b>teraz już tylko możesz zdobyć już wymintowane <b>Xenium_2o23_NFT</b> na <a href="https://opensea.io/" target="_blank">https://opensea.io</a>';
-            } else if (userBalance > 0) {
+              document.getElementById('buyInfo').innerHTML = '<b>Bida 🤔 ziom, spóźniłeś się </b>teraz już tylko możesz zdobyć już wymintowane <b>Xmas_NFT_4you</b> na <a href="https://opensea.io/" target="_blank">https://opensea.io</a>';
+            } else if (userBalance > 12) {
 
-
-//const tokenURIa = await contract.methods.tokenURI('1').call();
-
-
-/// zmienic 
-
-            document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅 jeden token <b>Xenium_2o23_NFT</b> daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO znajdziesz na jego temat w kontrakcie <a href="https://mumbai.polygonscan.com/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
+            document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅 jeden token <b>Xmas_NFT_4you</b> daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO znajdziesz na jego temat w kontrakcie <a href="https://mumbai.polygonscan.com/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
             } else {
               document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button>';
               document.getElementById('mintButton').addEventListener('click', async () => {
@@ -153,44 +137,27 @@ Kliknij <b>"+ Importuj NFT"</b><br><br>
 Wprowadź Adres kontraktu: <b>${contractAddress}</b><br>
 Wprowadź Token ID: <b>${tokenId}</b><br>
 Kliknij "Dodaj".<br><br>
-Albo odwiedź strone <a href="https://opensea.io/">https://opensea.io</a> i zaloguj się tam portfelem którym mintowaleś token, token już tam powinien być 🤠🤖</div>`;
-                  const tokenURI = await contract.methods.tokenURI(tokenId).call();
+Albo odwiedź strone <a href="https://pulsemarket.app/collection/0x9DF4d4eC50132C53D5e4928F2688af26068fa096">https://pulsemarket.app</a> i zaloguj się tam portfelem którym mintowaleś token, token już tam powinien być 🤠🤖</div>`;
+          
 
-
-
-document.getElementById('saveAndOpenButton').style.display = 'block'; 
-
+    const tokenURI = await contract.methods.tokenURI(tokenId).call();
+    document.getElementById('saveAndOpenButton').style.display = 'block'; 
 
 var dataToDecode = tokenURI.replace("data:application/json;base64,", "");
-// Dekoduj base64 do ciągu bajtów
 var decodedBytes = atob(dataToDecode);
-// Konwertuj ciąg bajtów do JSON
 var jsonData = JSON.parse(decodedBytes);
-//console.log(jsonData.animation_url);
-//image
-//var dataToDecode2 = jsonData.image.replace("data:image/svg+xml;base64,", "");
 var dataToDecode2 = jsonData.animation_url.replace("data:text/html;base64,", "");
 var decodedHtml = atob(dataToDecode2);
-//console.log(decodedHtml);
-//var newWindow = window.open();
-//newWindow.document.write(decodedHtml);
-document.getElementById("saveAndOpenButton").addEventListener("click", function() {
+
+   document.getElementById("saveAndOpenButton").addEventListener("click", function() {
             const animationCode = decodedHtml;
-   // Tworzenie Blob z kodem animacji
             const blob = new Blob([animationCode], { type: "text/html" });
-            // Tworzenie linku do pobrania
             const downloadLink = document.createElement("a");
             downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = "Twoj_token_Xenium_2o23_NFT.html";
-            // Symulacja kliknięcia na link, aby pobrać plik
+            downloadLink.download = "Twoj_token_Xmas_NFT_4you.html";
             downloadLink.click();
-            // Otwarcie pliku w nowym oknie przeglądarki
-            //const newWindow = window.open("", "_blank");
-            //newWindow.document.write(animationCode);
-            //newWindow.document.close();
         });
-
-  
+ 
                  //document.getElementById('tokenUriDisplay').innerHTML = `<br><br>To jest tokenURI można to sobie zachować na pamiątkę, to zawiera fullToken w całej rodzielczości: <a href="${tokenURI}" target="_blank"> ${tokenURI}</a>`;
  document.getElementById('mintButton').style.display = 'none'; 
 
@@ -210,7 +177,7 @@ document.getElementById("saveAndOpenButton").addEventListener("click", function(
 
     });
 
-  </script>
+</script>
 </body>
 </html>
 
