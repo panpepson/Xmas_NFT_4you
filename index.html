@@ -43,7 +43,7 @@ h1 {
 <div class="container">
   <div class="row  justify-content-md-center">
     <div class="col-md-auto"> 
-  <h3>Tu wymintujesz token</h3> <h2> Xmas_NFT_4you</h2><h4>na sieci <a href="https://www.gopulsechain.com/" target="_blank">PulsChaine</a>  jako kartka świąteczna.</h4>    
+  <h3>Tu wymintujesz token</h3> <h2>🎅 Xmas_NFT_4you🌲</h2><h4>na sieci <a href="https://www.gopulsechain.com/" target="_blank">PulsChaine</a>  jako świąteczną kartkę.</h4>    
     </div>
     <div class="col-md-auto">
     </div>
@@ -54,7 +54,7 @@ h1 {
 <div class="container">
   <div class="row">
     <div class="col-6">
-     <div class="p-3"><div id="connectButton" class="btn btn-info rounded-pill">Połącz puligares z siecią Polygon</div></div>
+     <div class="p-3"><div id="connectButton" class="btn btn-info rounded-pill">Połącz swój portfel z siecią PulseChain</div></div>
     </div>
     <div class="col-6">
       <div class="p-3"><div id="balance"></div></div>
@@ -116,7 +116,7 @@ h1 {
 
             document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅  12 sztul <b>Xmas_NFT_4you</b> więc daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO dot kontraktu znajdziesz tu <a href="https://otter.pulsechain.com/address/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
             } else {
-              document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button>';
+              document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>🎅Mintuj Xmas_NFT_4you🌲</h1></button>';
               document.getElementById('mintButton').addEventListener('click', async () => {
                 try {
                   const result = await contract.methods.mint().send({ from: userAddress });
