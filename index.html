@@ -38,8 +38,6 @@
     .kasa {
         margin-left: 33%;
     }
-
-    /* Styl dla galerii NFT */
     .nft-gallery {
         display: flex;
         flex-wrap: wrap;
@@ -47,29 +45,24 @@
         gap: 20px;
         margin: 20px 0;
     }
-
-    /* Styl dla pojedynczego NFT */
     .nft-item {
         text-align: center;
         margin: 10px;
     }
-
-    /* Dostosowanie układu dla urządzeń mobilnych */
     @media (max-width: 768px) {
         .nft-gallery {
             flex-direction: column;
             align-items: center;
         }
     }
-
-  </style>
+</style>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <center>
 <div class="container">
-  <div class="row  justify-content-md-center">
-    <div class="col-md-auto"> 
+<div class="row  justify-content-md-center">
+<div class="col-md-auto"> 
 <h2>🎅 🌲</h2>
 <h3>Tu wymintujesz edukacyjny token</h3> 
 <h2> <a href="https://scan.mypinata.cloud/ipfs/bafybeih3olry3is4e4lzm7rus5l3h6zrphcal5a7ayfkhzm5oivjro2cp4/#/token/0x9DF4d4eC50132C53D5e4928F2688af26068fa096" target="_blank">Xmas_NFT_4you</a></h2>
@@ -103,9 +96,7 @@
 
 </center>
 
-
-
- <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
@@ -132,65 +123,39 @@ document.addEventListener('DOMContentLoaded', async () => {
         ],
       });
 
-      const networkId = await web3.eth.getChainId(); // Pobranie chainId w poprawny sposób
+      const networkId = await web3.eth.getChainId(); 
       if (networkId !== 369) {
         console.warn('Nieprawidłowa sieć! Spodziewana PulseChain.');
         return;
       }
-
       const contractAddress = '0x9DF4d4eC50132C53D5e4928F2688af26068fa096';
       const contract = new web3.eth.Contract(contractABI, contractAddress);
       const accounts = await web3.eth.getAccounts();
       const userAddress = accounts[0];
       document.getElementById('connectButton').innerHTML = `Jesteś zalogowany jako: <br><b>${userAddress}</b>`;
-
-      // Pobieranie salda
       const balance = await web3.eth.getBalance(userAddress);
       const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
       document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
-
-      // Pobieranie NFT użytkownika
- 
-
-
-// Pobieranie liczby wyemitowanych NFT i wyświetlanie tokenów
-try {
+ try {
     const numMinted = await contract.methods.numMinted().call();
     const userAddress = accounts[0];
     const nftBalance = await contract.methods.balanceOf(userAddress).call();
-    
-    // Przygotowanie miejsca na wyświetlenie NFT
+        
     let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery">`;
 
-    // Pętla po wszystkich tokenach użytkownika
-//    for (let i = 0; i < nftBalance; i++) {
     for (let i = 0; i < numMinted+1; i++) {
        try {
-
-          // Pobierz ID tokenu dla danego indeksu
             const adresId = await contract.methods.ownerOf(i).call();
-      
-//console.log(adresId + ' / ' + i);
-  
         if(adresId === userAddress){
                 for(let aa = 0; aa < nftBalance; aa++){
-    console.log(adresId + ' / ' + i);
+//    console.log(adresId + ' / ' + i);
         } 
-                
-             const tokenId = i;   
-            // Pobierz URI tokenu (metadane)
+           const tokenId = i;   
             const tokenUri = await contract.methods.tokenURI(i).call();
-
-//console.log(userAddress);
-
-
             
             let imageUrl = tokenUri;
             let tokenName = `NFT #${tokenId}`;
-            //let animation_url = '';
-
-            // Dekodowanie Base64 jeśli URI jest w tym formacie
-            if (tokenUri.startsWith('data:application/json;base64,')) {
+          if (tokenUri.startsWith('data:application/json;base64,')) {
                 try {
                     const base64Data = tokenUri.split(',')[1];
                     const jsonMetadata = JSON.parse(atob(base64Data));
@@ -201,9 +166,8 @@ try {
                     console.error('Błąd dekodowania metadanych:', error);
                 }
             }
-
-            // Dodaj kartę NFT do wyświetlania
-nftDisplay += `
+            
+  nftDisplay += `
     <div class="nft-item">
         <a href="#" onclick="openAnimation('${animation_url}')" alt="${tokenName}">
             <img src="${imageUrl}" alt="${tokenName}" class="img-thumbnail" width="200">
@@ -222,14 +186,11 @@ nftDisplay += `
 
     nftDisplay += '</div></center>';
 
-    // Wyświetl informację jeśli nie ma tokenów
     if (nftBalance == 0) {
         nftDisplay = '<h4>Nie posiadasz żadnych NFT z tej kolekcji.</h4>';
     }
-
-    // Aktualizuj wyświetlanie na stronie
     document.getElementById('tokenIdDisplay2').innerHTML = nftDisplay;
- 
+
 } catch (error) {
     console.error('Błąd podczas pobierania NFT:', error);
     document.getElementById('tokenIdDisplay2').innerHTML = 'Wystąpił błąd podczas ładowania NFT.';
@@ -250,8 +211,7 @@ nftDisplay += `
           try {
             const result = await contract.methods.mint().send({ from: userAddress });
             console.log('Transakcja udana:', result);
-
-            // Pobieranie tokenId z logów transakcji
+          
             const event = result.events?.Transfer;
             if (!event) {
               console.error('Brak eventu Transfer. Sprawdź logi:', result);
@@ -283,15 +243,12 @@ nftDisplay += `
 function openAnimation(animation_url) {
     if (animation_url.startsWith('data:text/html;base64,')) {
         const newTab = window.open();
-        newTab.document.write(atob(animation_url.split(',')[1])); // Dekodowanie HTML
+        newTab.document.write(atob(animation_url.split(',')[1])); 
         newTab.document.close();
     } else {
         window.open(animation_url, '_blank');
     }
 }
-
-
 </script>
-
 </body>
 </html>
