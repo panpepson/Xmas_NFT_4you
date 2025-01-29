@@ -7,40 +7,105 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://trochymiak.net/i/pep-32.png" type="image/x-icon">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <style>
-body {
-    font-family: 'Share Tech', sans-serif;
-    font-size: 17px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    text-shadow: 8px 8px 10px #0000008c;
-    background-color: #343a40;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
-}
- 
-h1 {
-    margin: 30px;
-}
-.mint {
-    width: auto;
-}
-#saveAndOpenButton {
-            display: none; 
-  }
-.kasa{
-     margin-left: 33%;
+<style>
+    body {
+        font-family: 'Share Tech', sans-serif;
+        font-size: 17px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        text-shadow: 8px 8px 10px #0000008c;
+        background-color: #343a40;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
     }
 
+    h1 {
+        margin: 30px;
+    }
 
+    .mint {
+        width: auto;
+    }
 
+    #saveAndOpenButton {
+        display: none;
+    }
 
+    .kasa {
+        margin-left: 33%;
+    }
 
-</style>
+    /* Styl dla galerii NFT */
+    .nft-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    /* Styl dla pojedynczego NFT */
+    .nft-item {
+        text-align: center;
+        margin: 10px;
+    }
+
+    /* Dostosowanie układu dla urządzeń mobilnych */
+    @media (max-width: 768px) {
+        .nft-gallery {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    /* Styl dla okna modalnego */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: #343a40;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    /* Dostosowanie rozmiaru iframe dla różnych urządzeń */
+    iframe {
+        width: 350px;
+        height: 350px;
+    }
+
+    @media (max-width: 768px) {
+        iframe {
+            width: 300px;
+            height: 300px;
+        }
+    }
+  </style>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -73,12 +138,15 @@ h1 {
 </div>
 <div id="mintButtonContainer" class="d-grid gap-2"></div>
 <br>
- <div id="tokenIdDisplay"></div>
  <div id="tokenUriDisplay"></div>
  <div id="buyInfo"></div>
  <button id="saveAndOpenButton">Zapisz token na dysku</button>
 
+<div id="tokenIdDisplay" class="nft-gallery"></div>
+
 </center>
+
+
 
  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
@@ -135,7 +203,7 @@ try {
     const nftBalance = await contract.methods.balanceOf(userAddress).call();
     
     // Przygotowanie miejsca na wyświetlenie NFT
-    let nftDisplay = `<h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery">`;
+    let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery>`;
 
     // Pętla po wszystkich tokenach użytkownika
 //    for (let i = 0; i < nftBalance; i++) {
@@ -162,6 +230,7 @@ try {
             
             let imageUrl = tokenUri;
             let tokenName = `NFT #${tokenId}`;
+            //let animation_url = '';
 
             // Dekodowanie Base64 jeśli URI jest w tym formacie
             if (tokenUri.startsWith('data:application/json;base64,')) {
@@ -169,6 +238,7 @@ try {
                     const base64Data = tokenUri.split(',')[1];
                     const jsonMetadata = JSON.parse(atob(base64Data));
                     imageUrl = jsonMetadata.image || imageUrl;
+                    animation_url = jsonMetadata.animation_url || '';
                     tokenName = jsonMetadata.name || tokenName;
                 } catch (error) {
                     console.error('Błąd dekodowania metadanych:', error);
@@ -176,12 +246,15 @@ try {
             }
 
             // Dodaj kartę NFT do wyświetlania
-            nftDisplay += `
-                <div class="nft-item">
-                    <img src="${imageUrl}" alt="${tokenName}" class="img-thumbnail" width="200">
-                    <p class="nft-title">${tokenName}</p>
-                    <p class="nft-id">Token ID: ${tokenId}</p>
-                </div>`;
+nftDisplay += `
+    <div class="nft-item">
+        <a href="#" onclick="openAnimation('${animation_url}')" alt="${tokenName}">
+            <img src="${imageUrl}" alt="${tokenName}" class="img-thumbnail" width="200">
+        </a>
+        <p class="nft-title">${tokenName}</p>
+        <p class="nft-id">Token ID: ${tokenId}</p>
+    </div>`;
+
          }
 
         } catch (error) {
@@ -190,7 +263,7 @@ try {
 
     }
 
-    nftDisplay += '</div>';
+    nftDisplay += '</div></center>';
 
     // Wyświetl informację jeśli nie ma tokenów
     if (nftBalance == 0) {
@@ -205,10 +278,6 @@ try {
     document.getElementById('tokenIdDisplay').innerHTML = 'Wystąpił błąd podczas ładowania NFT.';
 }
 
-
-
-
-
       // Pobieranie liczby wyemitowanych NFT
       const numMinted = await contract.methods.numMinted().call();
       const userNFTBalance = await contract.methods.balanceOf(userAddress).call();
@@ -218,7 +287,7 @@ try {
       } else if (userNFTBalance >= 12) {
         document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅  12 sztuk <b>Xmas_NFT_4you</b>, więc daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO dot kontraktu znajdziesz tu <a href="https://otter.pulsechain.com/address/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
       } else {
-        document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>🎅Mintuj Xmas_NFT_4you🌲</h1></button>';
+        document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button>';
 
         document.getElementById('mintButton').addEventListener('click', async () => {
           try {
@@ -254,8 +323,18 @@ try {
   }
 });
 
+function openAnimation(animation_url) {
+    if (animation_url.startsWith('data:text/html;base64,')) {
+        const newTab = window.open();
+        newTab.document.write(atob(animation_url.split(',')[1])); // Dekodowanie HTML
+        newTab.document.close();
+    } else {
+        window.open(animation_url, '_blank');
+    }
+}
+
+
 </script>
 
 </body>
 </html>
-
