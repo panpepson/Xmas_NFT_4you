@@ -160,7 +160,7 @@ try {
     const nftBalance = await contract.methods.balanceOf(userAddress).call();
     
     // Przygotowanie miejsca na wyświetlenie NFT
-    let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery>`;
+    let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery">`;
 
     // Pętla po wszystkich tokenach użytkownika
 //    for (let i = 0; i < nftBalance; i++) {
