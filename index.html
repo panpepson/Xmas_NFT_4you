@@ -68,11 +68,9 @@
       }
     }
 
-
-/* Styl dla kręcącego się koła */
 .loader {
-    border: 8px solid #f3f3f3; /* Kolor tła koła */
-    border-top: 8px solid #3498db; /* Kolor animowanego koła */
+    border: 8px solid #f3f3f3; 
+    border-top: 8px solid #3498db; 
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -80,13 +78,10 @@
     margin: 20px auto;
 }
 
-/* Animacja obrotu */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
-/* Ukryj loader domyślnie */
 #loader {
     display: none;
 }
@@ -138,16 +133,13 @@
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
 <script>
-// Funkcja do pokazywania i ukrywania loadera
+
 function showLoader(show) {
     const loader = document.getElementById('loader');
-    const tokenDisplay = document.getElementById('tokenIdDisplay2');
     if (show) {
         loader.style.display = 'block'; // Pokaż loader
-        tokenDisplay.style.display = 'none'; // Ukryj wyświetlanie NFT
     } else {
         loader.style.display = 'none'; // Ukryj loader
-        tokenDisplay.style.display = 'block'; // Pokaż wyświetlanie NFT
     }
 }
 
@@ -194,8 +186,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             const balance = await web3.eth.getBalance(userAddress);
             const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
             document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
+            document.getElementById('mintButtonContainer').innerHTML = '<center><button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button></center>';
+            document.getElementById('mintButton').addEventListener('click', async () => {
+                try {
+                    const result = await contract.methods.mint().send({ from: userAddress });
+                    console.log('Transakcja udana:', result);
 
-            // Pokaż loader przed rozpoczęciem sprawdzania NFT
+                    const event = result.events?.Transfer;
+                    if (!event) {
+                        console.error('Brak eventu Transfer. Sprawdź logi:', result);
+                        return;
+                    }
+
+                    const tokenId = event.returnValues?.tokenId;
+                    document.getElementById('tokenIdDisplay').innerHTML = `<center>
+                        <br><h2> OK udało się 👍🤠 masz już token o numerze ${tokenId} 😍</h2><br>
+                        <h3>Oto <b>Instrukcje</b> jak dodać token do portfela:</h3>
+                        Otwórz np. MetaMask w swojej przeglądarce.<br>
+                        Kliknij na ikonę MetaMask 🦊 na pasku przeglądarki.<br>
+                        Wybierz zakładkę <b>"NFTs"</b> i na dole <br>
+                        Kliknij <b>"+ Importuj NFT"</b><br><br>
+                        Wprowadź Adres kontraktu: <b>${contractAddress}</b><br>
+                        Token ID: <b>${tokenId}</b></center>`;
+                    Confetti();
+                } catch (error) {
+                    console.error('Błąd podczas mintowania:', error);
+                }
+            });
+
             showLoader(true);
 
             try {
@@ -259,10 +277,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             } catch (error) {
                 console.error('Błąd podczas pobierania NFT:', error);
                 document.getElementById('tokenIdDisplay2').innerHTML = 'Wystąpił błąd podczas ładowania NFT.';
-                showLoader(false); // Ukryj loader w przypadku błędu
+                showLoader(false); 
             }
 
-            // Reszta kodu...
         } catch (error) {
             console.error('Błąd podczas łączenia:', error);
         }
@@ -294,7 +311,6 @@ function copyToClipboard(text) {
             console.error('Błąd podczas kopiowania:', error);
         });
 }
-
 </script>
 </body>
 </html>
