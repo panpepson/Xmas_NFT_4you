@@ -59,6 +59,7 @@
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <center>
 <div class="container">
 <div class="row  justify-content-md-center">
@@ -68,7 +69,7 @@
 <h2> <a href="https://scan.mypinata.cloud/ipfs/bafybeih3olry3is4e4lzm7rus5l3h6zrphcal5a7ayfkhzm5oivjro2cp4/#/token/0x9DF4d4eC50132C53D5e4928F2688af26068fa096" target="_blank">Xmas_NFT_4you</a></h2>
 <h4>na sieci <a href="https://www.gopulsechain.com/" target="_blank">PulsChaine</a>  jako świąteczną kartkę rodziny i znajomych</h4>
 <h4>Jedyny koszt 🫰 to opłata za gaz - nie masz gazu na opłaty sieciowe?</h4>
-<h4>Nie martw się 😎 <a href="https://getpls.fyi/" target="_blank">Tu jest kranik   🍼 gdzie dostaniesz gaz</a></h4>    
+<h4>Nie martw się 😎 <a href="https://getpls.fyi/" target="_blank">Tu jest kranik   🍼 gdzie dostaniesz swoje pierwsze PLS i starczy na gaz</a></h4>    
     </div>
     <div class="col-md-auto">
     </div>
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('connectButton').innerHTML = `Jesteś zalogowany jako: <br><b>${userAddress}</b>`;
       const balance = await web3.eth.getBalance(userAddress);
       const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
-      document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
+      document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa" >Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
  try {
     const numMinted = await contract.methods.numMinted().call();
     const userAddress = accounts[0];
@@ -187,7 +188,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     nftDisplay += '</div></center>';
 
     if (nftBalance == 0) {
-        nftDisplay = '<h4>Nie posiadasz żadnych NFT z tej kolekcji.</h4>';
+        nftDisplay = '<h4>Nie posiadasz żadnych NFT z tej kolekcji</h4>';
     }
     document.getElementById('tokenIdDisplay2').innerHTML = nftDisplay;
 
@@ -209,7 +210,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         document.getElementById('mintButton').addEventListener('click', async () => {
           try {
-            const result = await contract.methods.mint().send({ from: userAddress });
+            const cena = web3.utils.toWei('21');
+            const result = await contract.methods.mint(cena).send({ from: userAddress });
             console.log('Transakcja udana:', result);
           
             const event = result.events?.Transfer;
@@ -217,8 +219,8 @@ document.addEventListener('DOMContentLoaded', async () => {
               console.error('Brak eventu Transfer. Sprawdź logi:', result);
               return;
             }
-            const tokenId = event.returnValues?.tokenId;
-            document.getElementById('tokenIdDisplay').innerHTML = `<center>
+       const tokenId = event.returnValues?.tokenId;
+   document.getElementById('tokenIdDisplay').innerHTML = `<center>
               <br><h2> OK udało się 👍🤠 masz już token o numerze ${tokenId} 😍</h2><br>
               <h3>Oto <b>Instrukcje</b> jak dodać token do portfela:</h3>
               Otwórz np. MetaMask w swojej przeglądarce.<br>
@@ -227,6 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               Kliknij <b>"+ Importuj NFT"</b><br><br>
               Wprowadź Adres kontraktu: <b>${contractAddress}</b><br>
               Token ID: <b>${tokenId}</b></center>`;
+    Confetti();
           } catch (error) {
             console.error('Błąd podczas mintowania:', error);
           }
@@ -249,6 +252,10 @@ function openAnimation(animation_url) {
         window.open(animation_url, '_blank');
     }
 }
+
+ function Confetti(){ confetti({ particleCount: 250, spread: 80, origin: { y: 0.6 }}); }
+
+
 </script>
 </body>
 </html>
