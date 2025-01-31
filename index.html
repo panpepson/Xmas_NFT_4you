@@ -210,8 +210,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         document.getElementById('mintButton').addEventListener('click', async () => {
           try {
-            const cena = web3.utils.toWei('21');
-            const result = await contract.methods.mint().send({ from: userAddress, value: cena, });
+            //const cena = web3.utils.toWei('21');
+           // const result = await contract.methods.mint().send({ from: userAddress, value: cena, });
+         const result = await contract.methods.mint().send({ from: userAddress, });
             console.log('Transakcja udana:', result);
           
             const event = result.events?.Transfer;
