@@ -23,6 +23,12 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
     }
 
+
+#mintButton {
+    text-align: center;
+    width: 60%;
+   }
+
     h1 {
         margin: 30px;
     }
@@ -54,7 +60,38 @@
             flex-direction: column;
             align-items: center;
         }
+    .kasa {
+         text-align: center;
+         margin-left: -12%;
+         margin-top:53px;
+         width: 160px;
+      }
     }
+
+
+/* Styl dla kręcącego się koła */
+.loader {
+    border: 8px solid #f3f3f3; /* Kolor tła koła */
+    border-top: 8px solid #3498db; /* Kolor animowanego koła */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* Animacja obrotu */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Ukryj loader domyślnie */
+#loader {
+    display: none;
+}
+
+
 </style>
 </head>
 <body>
@@ -69,7 +106,7 @@
 <h2> <a href="https://scan.mypinata.cloud/ipfs/bafybeih3olry3is4e4lzm7rus5l3h6zrphcal5a7ayfkhzm5oivjro2cp4/#/token/0x9DF4d4eC50132C53D5e4928F2688af26068fa096" target="_blank">Xmas_NFT_4you</a></h2>
 <h4>na sieci <a href="https://www.gopulsechain.com/" target="_blank">PulsChaine</a>  jako świąteczną kartkę dla rodziny i znajomych</h4>
 <h4>Jedyny koszt 🫰 to opłata za gaz - nie masz gazu na opłaty sieciowe?</h4>
-<h4>Nie martw się 😎 <a href="https://getpls.fyi/" target="_blank">Tu jest kranik   🍼 gdzie dostaniesz swoje pierwsze PLS i starczy na gaz</a></h4>    
+<h4>Nie martw się 😎 <a href="https://getpls.fyi/" target="_blank">Tu jest kranik   🍼 gdzie dostaniesz</a> swoje pierwsze <b>PLS</b> i starczy na gaz</h4>    
     </div>
     <div class="col-md-auto">
     </div>
@@ -91,7 +128,8 @@
 <br>
  <div id="tokenUriDisplay"></div>
  <div id="buyInfo"></div>
- <button id="saveAndOpenButton">Zapisz token na dysku</button>
+<button id="saveAndOpenButton">Zapisz token na dysku</button>
+<div id="loader" class="loader"></div>
 <div id="tokenIdDisplay2" class="nft-gallery"></div>
 <div id="tokenIdDisplay"></div>
 
@@ -100,162 +138,162 @@
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', async () => {
-  if (typeof window.ethereum !== 'undefined') {
-    const ethereum = window.ethereum;
-    try {
-      await ethereum.request({ method: 'eth_requestAccounts' });
-      const web3 = new Web3(ethereum);
-
-      await ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [
-          {
-            chainId: '0x171',
-            chainName: 'PulseChain',
-            rpcUrls: ['https://rpc.pulsechain.com'],
-            nativeCurrency: {
-              name: 'PLS',
-              symbol: 'PLS',
-              decimals: 18,
-            },
-            blockExplorerUrls: ['https://otter.pulsechain.com'],
-          },
-        ],
-      });
-
-      const networkId = await web3.eth.getChainId(); 
-      if (networkId !== 369) {
-        console.warn('Nieprawidłowa sieć! Spodziewana PulseChain.');
-        return;
-      }
-      const contractAddress = '0x9DF4d4eC50132C53D5e4928F2688af26068fa096';
-      const contract = new web3.eth.Contract(contractABI, contractAddress);
-      const accounts = await web3.eth.getAccounts();
-      const userAddress = accounts[0];
-      document.getElementById('connectButton').innerHTML = `Jesteś zalogowany jako: <br><b>${userAddress}</b>`;
-      const balance = await web3.eth.getBalance(userAddress);
-      const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
-      document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa" >Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
- try {
-    const numMinted = await contract.methods.numMinted().call();
-    const userAddress = accounts[0];
-    const nftBalance = await contract.methods.balanceOf(userAddress).call();
-        
-    let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery">`;
-
-    for (let i = 0; i < numMinted+1; i++) {
-       try {
-            const adresId = await contract.methods.ownerOf(i).call();
-        if(adresId === userAddress){
-                for(let aa = 0; aa < nftBalance; aa++){
-//    console.log(adresId + ' / ' + i);
-        } 
-           const tokenId = i;   
-            const tokenUri = await contract.methods.tokenURI(i).call();
-            
-            let imageUrl = tokenUri;
-            let tokenName = `NFT #${tokenId}`;
-          if (tokenUri.startsWith('data:application/json;base64,')) {
-                try {
-                    const base64Data = tokenUri.split(',')[1];
-                    const jsonMetadata = JSON.parse(atob(base64Data));
-                    imageUrl = jsonMetadata.image || imageUrl;
-                    animation_url = jsonMetadata.animation_url || '';
-                    tokenName = jsonMetadata.name || tokenName;
-                } catch (error) {
-                    console.error('Błąd dekodowania metadanych:', error);
-                }
-            }
-            
-  nftDisplay += `
-    <div class="nft-item">
-        <a href="#" onclick="openAnimation('${animation_url}')" alt="${tokenName}">
-            <img src="${imageUrl}" alt="${tokenName}" class="img-thumbnail" width="200">
-        </a>
-        <p class="nft-title">${tokenName}</p>
-        <p class="nft-id">Token ID: ${tokenId}</p>
-    </div>`;
-
-         }
-
-        } catch (error) {
-            //console.error(`Błąd podczas pobierania tokenu ${i}:`, error);
-       }
-
+// Funkcja do pokazywania i ukrywania loadera
+function showLoader(show) {
+    const loader = document.getElementById('loader');
+    const tokenDisplay = document.getElementById('tokenIdDisplay2');
+    if (show) {
+        loader.style.display = 'block'; // Pokaż loader
+        tokenDisplay.style.display = 'none'; // Ukryj wyświetlanie NFT
+    } else {
+        loader.style.display = 'none'; // Ukryj loader
+        tokenDisplay.style.display = 'block'; // Pokaż wyświetlanie NFT
     }
-
-    nftDisplay += '</div></center>';
-
-    if (nftBalance == 0) {
-        nftDisplay = '<h4>Nie posiadasz żadnych NFT z tej kolekcji</h4>';
-    }
-    document.getElementById('tokenIdDisplay2').innerHTML = nftDisplay;
-
-} catch (error) {
-    console.error('Błąd podczas pobierania NFT:', error);
-    document.getElementById('tokenIdDisplay2').innerHTML = 'Wystąpił błąd podczas ładowania NFT.';
 }
 
-      // Pobieranie liczby wyemitowanych NFT
-      const numMinted = await contract.methods.numMinted().call();
-      const userNFTBalance = await contract.methods.balanceOf(userAddress).call();
+document.addEventListener('DOMContentLoaded', async () => {
+    if (typeof window.ethereum !== 'undefined') {
+        const ethereum = window.ethereum;
+        try {
+            await ethereum.request({ method: 'eth_requestAccounts' });
+            const web3 = new Web3(ethereum);
 
-      if (numMinted >= 12) {
-        document.getElementById('buyInfo').innerHTML = '<b>Bida 🤔 ziom, spóźniłeś się</b> teraz już tylko możesz zdobyć już wymintowane <b>Xmas_NFT_4you</b> na <a href="https://pulsemarket.app/collection/0x9DF4d4eC50132C53D5e4928F2688af26068fa096">https://pulsemarket.app</a>';
-      } else if (userNFTBalance >= 12) {
-        document.getElementById('buyInfo').innerHTML = `<br><br><h2> 🧅  Masz już 🧅  12 sztuk <b>Xmas_NFT_4you</b>, więc daj szansę innym 🫲😍🫱</h2> <br>Więcej INFO dot kontraktu znajdziesz tu <a href="https://otter.pulsechain.com/address/address/${contractAddress}" target="_blank">${contractAddress}</a>`;
-      } else {
-        document.getElementById('mintButtonContainer').innerHTML = '<button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button>';
+            await ethereum.request({
+                method: 'wallet_addEthereumChain',
+                params: [
+                    {
+                        chainId: '0x171',
+                        chainName: 'PulseChain',
+                        rpcUrls: ['https://rpc.pulsechain.com'],
+                        nativeCurrency: {
+                            name: 'PLS',
+                            symbol: 'PLS',
+                            decimals: 18,
+                        },
+                        blockExplorerUrls: ['https://otter.pulsechain.com'],
+                    },
+                ],
+            });
 
-        document.getElementById('mintButton').addEventListener('click', async () => {
-          try {
-            //const cena = web3.utils.toWei('21');
-           // const result = await contract.methods.mint().send({ from: userAddress, value: cena, });
-         const result = await contract.methods.mint().send({ from: userAddress, });
-            console.log('Transakcja udana:', result);
-          
-            const event = result.events?.Transfer;
-            if (!event) {
-              console.error('Brak eventu Transfer. Sprawdź logi:', result);
-              return;
+            const networkId = await web3.eth.getChainId();
+            if (networkId !== 369) {
+                console.warn('Nieprawidłowa sieć! Spodziewana PulseChain.');
+                return;
             }
-       const tokenId = event.returnValues?.tokenId;
-   document.getElementById('tokenIdDisplay').innerHTML = `<center>
-              <br><h2> OK udało się 👍🤠 masz już token o numerze ${tokenId} 😍</h2><br>
-              <h3>Oto <b>Instrukcje</b> jak dodać token do portfela:</h3>
-              Otwórz np. MetaMask w swojej przeglądarce.<br>
-              Kliknij na ikonę MetaMask 🦊 na pasku przeglądarki.<br>
-              Wybierz zakładkę <b>"NFTs"</b> i na dole <br>
-              Kliknij <b>"+ Importuj NFT"</b><br><br>
-              Wprowadź Adres kontraktu: <b>${contractAddress}</b><br>
-              Token ID: <b>${tokenId}</b></center>`;
-    Confetti();
-          } catch (error) {
-            console.error('Błąd podczas mintowania:', error);
-          }
-        });
-      }
-    } catch (error) {
-      console.error('Błąd podczas łączenia:', error);
+
+            const contractAddress = '0x9DF4d4eC50132C53D5e4928F2688af26068fa096';
+            const contract = new web3.eth.Contract(contractABI, contractAddress);
+            const accounts = await web3.eth.getAccounts();
+            const userAddress = accounts[0];
+
+            document.getElementById('connectButton').innerHTML = `Jesteś zalogowany jako: <br><b>${userAddress}</b>`;
+            document.getElementById('connectButton').addEventListener('click', () => {
+                copyToClipboard(userAddress);
+            });
+
+            const balance = await web3.eth.getBalance(userAddress);
+            const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
+            document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
+
+            // Pokaż loader przed rozpoczęciem sprawdzania NFT
+            showLoader(true);
+
+            try {
+                const numMinted = await contract.methods.numMinted().call();
+                const userAddress = accounts[0];
+                const nftBalance = await contract.methods.balanceOf(userAddress).call();
+
+                let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery">`;
+
+                for (let i = 0; i < numMinted + 1; i++) {
+                    try {
+                        const adresId = await contract.methods.ownerOf(i).call();
+                        if (adresId === userAddress) {
+                            for (let aa = 0; aa < nftBalance; aa++) {
+                                //console.log(adresId + ' / ' + i);
+                            }
+
+                            const tokenId = i;
+                            const tokenUri = await contract.methods.tokenURI(i).call();
+
+                            let imageUrl = tokenUri;
+                            let tokenName = `NFT #${tokenId}`;
+                            let animation_url = '';
+
+                            if (tokenUri.startsWith('data:application/json;base64,')) {
+                                try {
+                                    const base64Data = tokenUri.split(',')[1];
+                                    const jsonMetadata = JSON.parse(atob(base64Data));
+                                    imageUrl = jsonMetadata.image || imageUrl;
+                                    animation_url = jsonMetadata.animation_url || '';
+                                    tokenName = jsonMetadata.name || tokenName;
+                                } catch (error) {
+                                    console.error('Błąd dekodowania metadanych:', error);
+                                }
+                            }
+
+                            nftDisplay += `
+                                <div class="nft-item">
+                                    <a href="#" onclick="openAnimation('${animation_url}')" alt="${tokenName}">
+                                        <img src="${imageUrl}" alt="${tokenName}" class="img-thumbnail" width="200">
+                                    </a>
+                                    <p class="nft-title">${tokenName}</p>
+                                    <p class="nft-id">Token ID: ${tokenId}</p>
+                                </div>`;
+                        }
+                    } catch (error) {
+                        //console.error(`Błąd podczas pobierania tokenu ${i}:`, error);
+                    }
+                }
+
+                nftDisplay += '</div></center>';
+
+                if (nftBalance == 0) {
+                    nftDisplay = '<h4>Nie posiadasz żadnych NFT z tej kolekcji</h4>';
+                }
+
+                // Ukryj loader i pokaż NFT
+                showLoader(false);
+                document.getElementById('tokenIdDisplay2').innerHTML = nftDisplay;
+
+            } catch (error) {
+                console.error('Błąd podczas pobierania NFT:', error);
+                document.getElementById('tokenIdDisplay2').innerHTML = 'Wystąpił błąd podczas ładowania NFT.';
+                showLoader(false); // Ukryj loader w przypadku błędu
+            }
+
+            // Reszta kodu...
+        } catch (error) {
+            console.error('Błąd podczas łączenia:', error);
+        }
+    } else {
+        alert('Zainstaluj MetaMask, aby połączyć się z PulseChain.');
     }
-  } else {
-    alert('Zainstaluj MetaMask, aby połączyć się z PulseChain.');
-  }
 });
 
 function openAnimation(animation_url) {
     if (animation_url.startsWith('data:text/html;base64,')) {
         const newTab = window.open();
-        newTab.document.write(atob(animation_url.split(',')[1])); 
+        newTab.document.write(atob(animation_url.split(',')[1]));
         newTab.document.close();
     } else {
         window.open(animation_url, '_blank');
     }
 }
 
- function Confetti(){ confetti({ particleCount: 250, spread: 80, origin: { y: 0.6 }}); }
+function Confetti() {
+    confetti({ particleCount: 250, spread: 80, origin: { y: 0.6 } });
+}
 
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+        .then(() => {
+            alert('Adres skopiowany do schowka: ' + text);
+        })
+        .catch((error) => {
+            console.error('Błąd podczas kopiowania:', error);
+        });
+}
 
 </script>
 </body>
