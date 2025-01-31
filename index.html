@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('mintButton').addEventListener('click', async () => {
           try {
             const cena = web3.utils.toWei('21');
-            const result = await contract.methods.mint(cena).send({ from: userAddress });
+            const result = await contract.methods.mint().send({ from: userAddress, value: cena, });
             console.log('Transakcja udana:', result);
           
             const event = result.events?.Transfer;
