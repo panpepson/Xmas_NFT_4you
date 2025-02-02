@@ -1,4 +1,4 @@
-# Xmas_NFT_4you to 🖼️👉👇
+# 🎅🎁🌲 Xmas_NFT_4you to 🖼️👉👇
 
 ## **1. Wprowadzenie**
 
@@ -21,7 +21,7 @@ Te NFT prezentują dynamiczną, interaktywną i wizualnie atrakcyjną sztukę cy
 
 - **Edukacja**: Kolekcja ma na celu przybliżenie użytkownikom technologii NFT oraz blockchainu PulseChain w przystępny i zabawowy sposób.
 - **Świąteczna atmosfera**: Każdy token to interaktywna karta świąteczna, która może być wysłana jako prezent dla rodziny i znajomych.
-- **Kolekcjonerstwo**: Limitowana liczba tokenów (12 000) sprawia, że każdy NFT jest unikalny i wartościowy.
+- **Kolekcjonerstwo**: Limitowana liczba tokenów (12 000) sprawia, że każdy NFT jest opatrzony unikalnym numerem ID.
 
 
 Więcej na Whitepaper: [**Xmas_NFT_4you**](https://github.com/panpepson/Xmas_NFT_4you/blob/main/Whitepaper-PL.md)

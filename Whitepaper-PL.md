@@ -1,4 +1,4 @@
-# Whitepaper: **Xmas_NFT_4you**
+# Whitepaper: **Xmas_NFT_4you** 🎅🎁🌲
 
 ---
 
@@ -6,7 +6,6 @@
 
 **Xmas_NFT_4you** to kolekcja limitowanych edukacyjnych tokenów NFT (Non-Fungible Tokens) na blockchainie **PulseChain**, stworzona z myślą o świątecznej atmosferze i edukacji na temat technologii blockchain. 
 Każdy token w kolekcji jest identyczny, a jego zawartość to interaktywna animacja. Nasz projekt ma na celu rozpowszechnianie radości i ducha Bożego Narodzenia w świecie cyfrowym, łącząc magię świątecznego okresu z innowacją technologii blockchain.
-
 
 
 ### **1.1. Czym jest Xmas NFT 4you?**
@@ -25,8 +24,7 @@ Te NFT prezentują dynamiczną, interaktywną i wizualnie atrakcyjną sztukę cy
 
 - **Edukacja**: Kolekcja ma na celu przybliżenie użytkownikom technologii NFT oraz blockchainu PulseChain w przystępny i zabawowy sposób.
 - **Świąteczna atmosfera**: Każdy token to interaktywna karta świąteczna, która może być wysłana jako prezent dla rodziny i znajomych.
-- **Kolekcjonerstwo**: Limitowana liczba tokenów (12 000) sprawia, że każdy NFT jest unikalny i wartościowy.
-
+- **Kolekcjonerstwo**: Limitowana liczba tokenów (12 000) sprawia, że każdy NFT jest opatrzony unikalnym numerem ID.
 
 ### **2.1. Kluczowe Funkcje**
 - **Maksymalna Podaż**: Kolekcja jest ograniczona do 12 000 NFT, co zapewnia rzadkość i wartość.
@@ -162,9 +160,6 @@ Wesołych świąt i udanego kolekcjonowania!
 - **Twitter**: [@XmasNFT4you](#)
 
 ---
-
-
-
 
 
 **© 2023 Xmas_NFT_4you Team ツ**
