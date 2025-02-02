@@ -97,7 +97,7 @@
 <div class="row  justify-content-md-center">
 <div class="col-md-auto"> 
 <h2>🎅 🌲</h2>
-<h3>Tu wymintujesz edukacyjny token</h3> 
+<h3>Tu wymintujesz maksymalnie 12 edukacyjny token</h3> 
 <h2> <a href="https://scan.mypinata.cloud/ipfs/bafybeih3olry3is4e4lzm7rus5l3h6zrphcal5a7ayfkhzm5oivjro2cp4/#/token/0x9DF4d4eC50132C53D5e4928F2688af26068fa096" target="_blank">Xmas_NFT_4you</a></h2>
 <h4>na sieci <a href="https://www.gopulsechain.com/" target="_blank">PulsChaine</a>  jako świąteczną kartkę dla rodziny i znajomych</h4>
 <h4>Jedyny koszt 🫰 to opłata za gaz - nie masz gazu na opłaty sieciowe?</h4>
@@ -207,8 +207,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         Wybierz zakładkę <b>"NFTs"</b> i na dole <br>
                         Kliknij <b>"+ Importuj NFT"</b><br><br>
                         Wprowadź Adres kontraktu: <b>${contractAddress}</b><br>
-                        Token ID: <b>${tokenId}</b></center>`;
-                    Confetti();
+                        Token ID: <b>${tokenId}</b></center>
+                       Albo odwiedź strone <a href="https://pulsemarket.app/collection/0x9DF4d4eC50132C53D5e4928F2688af26068fa096">https://pulsemarket.app</a> i zaloguj się tam portfelem którym mintowaleś token, token już tam powinien być 🤠🤖</div>`;  
+                   Confetti();
                 } catch (error) {
                     console.error('Błąd podczas mintowania:', error);
                 }
@@ -221,15 +222,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const userAddress = accounts[0];
                 const nftBalance = await contract.methods.balanceOf(userAddress).call();
 
-                let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych tokenów NFT</h4><div class="nft-gallery">`;
+                let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych NFT</h4><div class="nft-gallery">`;
+
+        if (nftBalance >= 12) {
+             document.getElementById('buyInfo').innerHTML = `<b>Bida 🤔 ziom,  wymintowałeś max przysługujący na 1 adres </b>teraz już tylko możesz zdobyć <b>Xmas_NFT_4you</b> na <a href="https://otter.pulsechain.com/address/address/${contractAddress}" target="_blank">https://otter.pulsechain.com/</a> albo mintować z innego adresu 😎`;
+            } else {
 
                 for (let i = 0; i < numMinted + 1; i++) {
                     try {
                         const adresId = await contract.methods.ownerOf(i).call();
                         if (adresId === userAddress) {
-                            for (let aa = 0; aa < nftBalance; aa++) {
-                                //console.log(adresId + ' / ' + i);
-                            }
+                           // for (let aa = 0; aa < nftBalance; aa++) {
+                          //      //console.log(adresId + ' / ' + i);
+                          //  }
 
                             const tokenId = i;
                             const tokenUri = await contract.methods.tokenURI(i).call();
@@ -263,8 +268,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         //console.error(`Błąd podczas pobierania tokenu ${i}:`, error);
                     }
                 }
-
-                nftDisplay += '</div></center>';
+      }
+  
+   nftDisplay += '</div></center>';
 
                 if (nftBalance == 0) {
                     nftDisplay = '<h4>Nie posiadasz żadnych NFT z tej kolekcji</h4>';
