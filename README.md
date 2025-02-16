@@ -1,27 +1,25 @@
-# 🎅🎁🌲 Xmas_NFT_4you to 🖼️👉👇
+# 🎅🎁🌲 Xmas_NFT_4you 🖼️👉👇
 
-## **1. Wprowadzenie**
+## **1. Introduction**
+**Xmas_NFT_4you** is a limited collection of educational NFT (Non-Fungible Tokens) on the **PulseChain** blockchain, created with the Christmas spirit and blockchain technology education in mind.
 
-**Xmas_NFT_4you** to kolekcja limitowanych edukacyjnych tokenów NFT (Non-Fungible Tokens) na blockchainie **PulseChain**, stworzona z myślą o świątecznej atmosferze i edukacji na temat technologii blockchain. 
-Każdy token w kolekcji jest identyczny, a jego zawartość to interaktywna animacja. Nasz projekt ma na celu rozpowszechnianie radości i ducha Bożego Narodzenia w świecie cyfrowym, łącząc magię świątecznego okresu z innowacją technologii blockchain.
+Each token in the collection is identical, and its content is an interactive animation. Our project aims to spread the joy and spirit of Christmas in the digital world, combining the magic of the holiday season with blockchain technology innovation.
 
-### **1.1. Czym jest Xmas NFT 4you?**
+### **1.1. What is Xmas NFT 4you?**
+Xmas NFT 4you is a limited edition of digital educational and collectible items, each embodying the essence of Christmas.
 
-Xmas NFT 4you to limitowana edycja cyfrowych edukacyjnych i kolekcjonerskich przedmiotów, z których każdy uosabia esencję Świąt Bożego Narodzenia. 
-Te NFT prezentują dynamiczną, interaktywną i wizualnie atrakcyjną sztukę cyfrową, co czyni je idealnymi na celebrowanie świąt lub jako unikatowy cyfrowy prezent.
+These NFTs present dynamic, interactive, and visually appealing digital art, making them ideal for celebrating the holidays or as a unique digital gift.
 
-- **Unikatowa Sztuka**: Każdy NFT zawiera ciekawe świąteczne dzieło sztuki, zapewniając ekskluzywność i kolekcjonerską wartość.
-- **Interaktywne Doświadczenie**: Nasze NFT oferują interaktywne elementy, w tym muzykę i animacje, co wzbogaca świąteczne doświadczenie.
-- **Społeczność**: Dołącz do żywej społeczności kolekcjonerów i miłośników świąt Bożego Narodzenia i św Mikołaja. 
-- **Technologia Blockchain**: Wykorzystanie sieci PulseChain zapewnia bezpieczeństwo, przejrzystość i niezmienność Twoich NFT.
+- **Unique Art**: Each NFT contains an interesting Christmas artwork, ensuring exclusivity and collector's value.
+- **Interactive Experience**: Our NFTs offer interactive elements, including music and animations, enhancing the Christmas experience.
+- **Community**: Join a vibrant community of collectors and enthusiasts of Christmas and Santa Claus.
+- **Blockchain Technology**: The use of PulseChain network ensures security, transparency, and immutability of your NFTs.
 
 ---
 
-## **2. Cel projektu**
+## **2. Project Objectives**
+- **Education**: The collection aims to introduce users to NFT technology and blockchain on the PulseChain network in an accessible and fun way.
+- **Christmas Atmosphere**: Each token is an interactive Christmas card that can be given as a gift to family and friends.
+- **Collecting**: The limited number of tokens (12,000) means each NFT is marked with a unique ID number.
 
-- **Edukacja**: Kolekcja ma na celu przybliżenie użytkownikom technologię NFT oraz blockchain w sieci PulseChain w przystępny i zabawowy sposób.
-- **Świąteczna atmosfera**: Każdy token to interaktywna karta świąteczna, która może zostać podarowana jako prezent dla rodziny i znajomych.
-- **Kolekcjonerstwo**: Limitowana liczba tokenów (12 000) sprawia, że każdy NFT jest opatrzony unikalnym numerem ID.
-
-
-Więcej na Whitepaper: [**Xmas_NFT_4you**](https://github.com/panpepson/Xmas_NFT_4you/blob/main/Whitepaper-PL.md)
+Learn more in the Whitepaper: [**Xmas_NFT_4you**](https://github.com/panpepson/Xmas_NFT_4you/blob/main/Whitepaper-PL.md)

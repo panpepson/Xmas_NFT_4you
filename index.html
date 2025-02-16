@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>mint_Xmas_NFT_4you</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="https://trochymiak.net/i/pep-32.png" type="image/x-icon">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🎅 🌲mint_Xmas_NFT_4you</title>
+<link rel="shortcut icon" href="/i/i-32.png" type="image/x-icon" >
+<link rel="icon" href="/i/i-32.png" type="image/x-icon" sizes="32x32">
+<link rel="icon" href="/i/i-19.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="/i/i-180.png" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<meta property="og:title" content="Free 🎅 🌲 mint_Xmas_NFT_4you" />
+<meta property="og:description" content="Here you can mint up to 12 educational tokens Xmas_NFT_4you on PulseChain network as a Christmas card for family and friends" />
+<meta property="og:image" content="/i/cover.jpg" />
+<meta property="og:url" content="https://xmas-nft-4you.vercel.app/" />
+<meta property="og:type" content="website" />
+
+
 <style>
     body {
         font-family: 'Share Tech', sans-serif;
@@ -23,85 +33,237 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
     }
 
+    .container:first-of-type {
+        padding-top: 13px;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            align-items: flex-start; 
+            padding-top: 13px; 
+            min-height: 100vh; 
+            height: auto; 
+        }
+        
+        .container:first-of-type {
+            padding-top: 15px; 
+        }
+    }
+
+
+.header-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.emoji-center {
+    text-align: center;
+}
+
+
+.book-icon {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.2s;
+}
+
+.book-icon:hover {
+    transform: scale(1.1);
+}
+
+
+.modal {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.modal-dialog.modal-lg {
+    max-width: 900px;
+}
+
+.modal-content {
+    background-color: #343a40;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.close {
+    color: white;
+}
+
+
+
+.modal-body {
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: justify;
+}
+
+#whitepaperContent {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 10px;
+}
+
+#whitepaperContent h1, 
+#whitepaperContent h2, 
+#whitepaperContent h3 {
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+#whitepaperContent strong {
+    color: #ffd700;
+}
+
+#whitepaperContent ul, 
+#whitepaperContent ol {
+    padding-left: 25px;
+}
+
+#whitepaperContent li {
+    margin: 8px 0;
+}
+
+#whitepaperContent a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#whitepaperContent a:hover {
+    text-decoration: underline;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #343a40;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+
+@media (max-width: 768px) {
+    .book-icon {
+        right: 12px;
+    }
+}
+
+
+
 
 #mintButton {
-    text-align: center;
-    width: 60%;
-   }
-
-    h1 {
-        margin: 30px;
-    }
-
-    .mint {
-        width: auto;
-    }
-
-    #saveAndOpenButton {
-        display: none;
-    }
-
-    .kasa {
-        margin-left: 33%;
-    }
-    .nft-gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin: 20px 0;
-    }
-    .nft-item {
-        text-align: center;
-        margin: 10px;
-    }
-    @media (max-width: 768px) {
-        .nft-gallery {
-            flex-direction: column;
-            align-items: center;
-        }
-    .kasa {
-         text-align: center;
-         margin-left: -12%;
-         margin-top:53px;
-         width: 160px;
-      }
-    }
-
-.loader {
-    border: 8px solid #f3f3f3; 
-    border-top: 8px solid #3498db; 
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
+text-align: center;
+width: 60%;
+}
+h1 {
+    margin: 30px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.mint {
+    width: auto;
 }
-#loader {
+
+#saveAndOpenButton {
     display: none;
 }
 
+.kasa {
+    margin-left: 33%;
+}
+.nft-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+.nft-item {
+    text-align: center;
+    margin: 10px;
+}
+@media (max-width: 768px) {
+    .nft-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+.kasa {
+     text-align: center;
+     margin-left: -12%;
+     margin-top:53px;
+     width: 160px;
+  }
+}
 
+.loader {
+border: 8px solid #f3f3f3;
+border-top: 8px solid #3498db;
+border-radius: 50%;
+width: 60px;
+height: 60px;
+animation: spin 1s linear infinite;
+margin: 20px auto;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+#loader {
+display: none;
+}
 </style>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <center>
 <div class="container">
 <div class="row  justify-content-md-center">
+
 <div class="col-md-auto"> 
-<h2>🎅 🌲</h2>
-<h3>Tu wymintujesz maksymalnie 12 edukacyjny token</h3> 
+    <div class="header-container">
+        <div class="emoji-center">
+            <h2>🎅 🌲</h2>
+        </div>
+        <div class="book-icon"  title="Whitepaper: Xmas_NFT_4you " >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+        </div>
+    </div>
+
+<h3>Here you can mint up to 12 educational tokens</h3> 
 <h2> <a href="https://scan.mypinata.cloud/ipfs/bafybeih3olry3is4e4lzm7rus5l3h6zrphcal5a7ayfkhzm5oivjro2cp4/#/token/0x9DF4d4eC50132C53D5e4928F2688af26068fa096" target="_blank">Xmas_NFT_4you</a></h2>
-<h4>na sieci <a href="https://www.gopulsechain.com/" target="_blank">PulsChaine</a>  jako świąteczną kartkę dla rodziny i znajomych</h4>
-<h4>Jedyny koszt 🫰 to opłata za gaz - nie masz gazu na opłaty sieciowe?</h4>
-<h4>Nie martw się 😎 <a href="https://getpls.fyi/" target="_blank">Tu jest kranik   🍼 gdzie dostaniesz</a> swoje pierwsze <b>PLS</b> i starczy na gaz</h4>    
+<h4>on <a href="https://www.gopulsechain.com/" target="_blank">PulseChain</a> network as a Christmas card for family and friends</h4>
+<h4>The only cost 🫰 is the gas fee - no gas for network fees?</h4>
+<h4>Don't worry 😎 <a href="https://getpls.fyi/" target="_blank">Here's a faucet 🍼 where you'll get</a> your first <b>PLS</b> and it'll be enough for gas</h4> 
+</div>   
     </div>
     <div class="col-md-auto">
     </div>
@@ -112,7 +274,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-     <div class="p-3"><div id="connectButton" class="btn btn-info rounded-pill">Połącz swój portfel z siecią PulseChain</div></div>
+     <div class="p-3"><div id="connectButton" class="btn btn-info rounded-pill">Connect your wallet to PulseChain network</div></div>
     </div>
     <div class="col-6">
       <div class="p-3"><div id="balance"></div></div>
@@ -123,12 +285,29 @@
 <br>
  <div id="tokenUriDisplay"></div>
  <div id="buyInfo"></div>
-<button id="saveAndOpenButton">Zapisz token na dysku</button>
+<button id="saveAndOpenButton">Save token to disk</button>
 <div id="loader" class="loader"></div>
 <div id="tokenIdDisplay2" class="nft-gallery"></div>
 <div id="tokenIdDisplay"></div>
-
 </center>
+
+<!-- Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookModalLabel">Xmas_NFT_4you Whitepaper</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="whitepaperContent">
+                    <!-- dane z JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
@@ -137,9 +316,9 @@
 function showLoader(show) {
     const loader = document.getElementById('loader');
     if (show) {
-        loader.style.display = 'block'; // Pokaż loader
+        loader.style.display = 'block';
     } else {
-        loader.style.display = 'none'; // Ukryj loader
+        loader.style.display = 'none';
     }
 }
 
@@ -169,7 +348,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const networkId = await web3.eth.getChainId();
             if (networkId !== 369) {
-                console.warn('Nieprawidłowa sieć! Spodziewana PulseChain.');
+                console.warn('Incorrect network! Expected PulseChain.');
                 return;
             }
 
@@ -178,40 +357,37 @@ document.addEventListener('DOMContentLoaded', async () => {
             const accounts = await web3.eth.getAccounts();
             const userAddress = accounts[0];
 
-            document.getElementById('connectButton').innerHTML = `Jesteś zalogowany jako: <br><b>${userAddress}</b>`;
+            document.getElementById('connectButton').innerHTML = `You are logged in as: <br><b>${userAddress}</b>`;
             document.getElementById('connectButton').addEventListener('click', () => {
                 copyToClipboard(userAddress);
             });
 
             const balance = await web3.eth.getBalance(userAddress);
             const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
-            document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Saldo konta to : <br><b>${formattedBalance}</b> PLS</p>`;
-            document.getElementById('mintButtonContainer').innerHTML = '<center><button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mintuj Xmas_NFT_4you</h1></button></center>';
+            document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Account balance: <br><b>${formattedBalance}</b> PLS</p>`;
+            document.getElementById('mintButtonContainer').innerHTML = '<center><button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mint Xmas_NFT_4you</h1></button></center>';
             document.getElementById('mintButton').addEventListener('click', async () => {
                 try {
                     const result = await contract.methods.mint().send({ from: userAddress });
-                    console.log('Transakcja udana:', result);
 
                     const event = result.events?.Transfer;
                     if (!event) {
-                        console.error('Brak eventu Transfer. Sprawdź logi:', result);
                         return;
                     }
 
                     const tokenId = event.returnValues?.tokenId;
                     document.getElementById('tokenIdDisplay').innerHTML = `<center>
-                        <br><h2> OK udało się 👍🤠 masz już token o numerze ${tokenId} 😍</h2><br>
-                        <h3>Oto <b>Instrukcje</b> jak dodać token do portfela:</h3>
-                        Otwórz np. MetaMask w swojej przeglądarce.<br>
-                        Kliknij na ikonę MetaMask 🦊 na pasku przeglądarki.<br>
-                        Wybierz zakładkę <b>"NFTs"</b> i na dole <br>
-                        Kliknij <b>"+ Importuj NFT"</b><br><br>
-                        Wprowadź Adres kontraktu: <b>${contractAddress}</b><br>
+                        <br><h2> OK success 👍🤠 you now have token number ${tokenId} 😍</h2><br>
+                        <h3>Here are <b>Instructions</b> how to add token to wallet:</h3>
+                        Open MetaMask in your browser.<br>
+                        Click on MetaMask icon 🦊 in browser bar.<br>
+                        Select <b>"NFTs"</b> tab and at bottom <br>
+                        Click <b>"+ Import NFT"</b><br><br>
+                        Enter Contract address: <b>${contractAddress}</b><br>
                         Token ID: <b>${tokenId}</b></center>
-                       Albo odwiedź strone <a href="https://pulsemarket.app/collection/0x9DF4d4eC50132C53D5e4928F2688af26068fa096">https://pulsemarket.app</a> i zaloguj się tam portfelem którym mintowaleś token, token już tam powinien być 🤠🤖</div>`;  
+                       Or visit <a href="https://pulsemarket.app/collection/0x9DF4d4eC50132C53D5e4928F2688af26068fa096">https://pulsemarket.app</a> and login with the wallet you used to mint the token, the token should already be there 🤠🤖</div>`;  
                    Confetti();
                 } catch (error) {
-                    console.error('Błąd podczas mintowania:', error);
                 }
             });
 
@@ -222,20 +398,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const userAddress = accounts[0];
                 const nftBalance = await contract.methods.balanceOf(userAddress).call();
 
-                let nftDisplay = `<center><h4>Posiadasz ${nftBalance} z ${numMinted} całkowicie wymintowanych NFT</h4><div class="nft-gallery">`;
+                let nftDisplay = `<center><h4>You own ${nftBalance} out of ${numMinted} total minted NFTs</h4><div class="nft-gallery">`;
 
         if (nftBalance >= 12) {
-             document.getElementById('buyInfo').innerHTML = `<b>Bida 🤔 ziom,  wymintowałeś max przysługujący na 1 adres </b>teraz już tylko możesz zdobyć <b>Xmas_NFT_4you</b> na <a href="https://otter.pulsechain.com/address/address/${contractAddress}" target="_blank">https://otter.pulsechain.com/</a> albo mintować z innego adresu 😎`;
+             document.getElementById('buyInfo').innerHTML = `<b>Sorry 🤔 buddy, you've minted max allowed per address</b> now you can only get <b>Xmas_NFT_4you</b> on <a href="https://otter.pulsechain.com/address/address/${contractAddress}" target="_blank">https://otter.pulsechain.com/</a> or mint from another address 😎`;
             } else {
 
                 for (let i = 0; i < numMinted + 1; i++) {
                     try {
                         const adresId = await contract.methods.ownerOf(i).call();
                         if (adresId === userAddress) {
-                           // for (let aa = 0; aa < nftBalance; aa++) {
-                          //      //console.log(adresId + ' / ' + i);
-                          //  }
-
                             const tokenId = i;
                             const tokenUri = await contract.methods.tokenURI(i).call();
 
@@ -251,7 +423,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     animation_url = jsonMetadata.animation_url || '';
                                     tokenName = jsonMetadata.name || tokenName;
                                 } catch (error) {
-                                    console.error('Błąd dekodowania metadanych:', error);
                                 }
                             }
 
@@ -265,7 +436,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 </div>`;
                         }
                     } catch (error) {
-                        //console.error(`Błąd podczas pobierania tokenu ${i}:`, error);
                     }
                 }
       }
@@ -273,24 +443,21 @@ document.addEventListener('DOMContentLoaded', async () => {
    nftDisplay += '</div></center>';
 
                 if (nftBalance == 0) {
-                    nftDisplay = '<h4>Nie posiadasz żadnych NFT z tej kolekcji</h4>';
+                    nftDisplay = '<h4>You don\'t own any NFTs from this collection</h4>';
                 }
 
-                // Ukryj loader i pokaż NFT
                 showLoader(false);
                 document.getElementById('tokenIdDisplay2').innerHTML = nftDisplay;
 
             } catch (error) {
-                console.error('Błąd podczas pobierania NFT:', error);
-                document.getElementById('tokenIdDisplay2').innerHTML = 'Wystąpił błąd podczas ładowania NFT.';
+                document.getElementById('tokenIdDisplay2').innerHTML = 'Error loading NFTs.';
                 showLoader(false); 
             }
 
         } catch (error) {
-            console.error('Błąd podczas łączenia:', error);
         }
     } else {
-        alert('Zainstaluj MetaMask, aby połączyć się z PulseChain.');
+        alert('Install MetaMask to connect to PulseChain.');
     }
 });
 
@@ -311,12 +478,29 @@ function Confetti() {
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text)
         .then(() => {
-            alert('Adres skopiowany do schowka: ' + text);
+            alert('Address copied to clipboard: ' + text);
         })
         .catch((error) => {
-            console.error('Błąd podczas kopiowania:', error);
         });
 }
+document.querySelector('.book-icon').addEventListener('click', async () => {
+    try {
+        const modal = new bootstrap.Modal(document.getElementById('bookModal'));
+        modal.show();
+        const response = await fetch('Whitepaper-UK.md');
+        if (!response.ok) {
+            throw new Error('Nie udało się pobrać pliku whitepaper');
+        }
+        const markdown = await response.text();
+        const html = marked.parse(markdown);
+        document.getElementById('whitepaperContent').innerHTML = html;
+    } catch (error) {
+        console.error('Błąd:', error);
+        document.getElementById('whitepaperContent').innerHTML = 
+            '<p class="text-danger">Przepraszamy, nie udało się załadować whitepaper. Spróbuj ponownie później.</p>';
+    }
+});
+
 </script>
 </body>
 </html>
