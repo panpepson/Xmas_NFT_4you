@@ -9,14 +9,11 @@
 <link rel="icon" href="/i/i-19.png" sizes="192x192" />
 <link rel="apple-touch-icon-precomposed" href="/i/i-180.png" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
 <meta property="og:title" content="Free 🎅 🌲 mint_Xmas_NFT_4you" />
 <meta property="og:description" content="Here you can mint up to 12 educational tokens Xmas_NFT_4you on PulseChain network as a Christmas card for family and friends" />
-<meta property="og:image" content="/i/cover.jpg" />
+<meta property="og:image" content="https://xmas-nft-4you.vercel.app/i/cover.jpg" />
 <meta property="og:url" content="https://xmas-nft-4you.vercel.app/" />
 <meta property="og:type" content="website" />
-
-
 <style>
     body {
         font-family: 'Share Tech', sans-serif;
@@ -49,8 +46,6 @@
             padding-top: 15px; 
         }
     }
-
-
 .header-container {
     position: relative;
     width: 100%;
@@ -59,12 +54,9 @@
     align-items: center;
     margin-bottom: 6px;
 }
-
 .emoji-center {
     text-align: center;
 }
-
-
 .book-icon {
     position: absolute;
     right: 12px;
@@ -72,11 +64,9 @@
     padding: 8px;
     transition: transform 0.2s;
 }
-
 .book-icon:hover {
     transform: scale(1.1);
 }
-
 
 .modal {
     background: rgba(0, 0, 0, 0.8);
@@ -103,8 +93,6 @@
 .close {
     color: white;
 }
-
-
 
 .modal-body {
     max-height: 80vh;
@@ -172,9 +160,6 @@
         right: 12px;
     }
 }
-
-
-
 
 #mintButton {
 text-align: center;
@@ -290,7 +275,6 @@ display: none;
 <div id="tokenIdDisplay2" class="nft-gallery"></div>
 <div id="tokenIdDisplay"></div>
 </center>
-
 <!-- Modal -->
 <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -307,12 +291,9 @@ display: none;
         </div>
     </div>
 </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
 <script>
-
 function showLoader(show) {
     const loader = document.getElementById('loader');
     if (show) {
@@ -440,7 +421,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
       }
   
-   nftDisplay += '</div></center>';
+nftDisplay += '</div></center>';
 
                 if (nftBalance == 0) {
                     nftDisplay = '<h4>You don\'t own any NFTs from this collection</h4>';
