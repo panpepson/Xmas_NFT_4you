@@ -256,7 +256,6 @@ display: none;
             </svg>
         </div>
     </div>
-
 <h3>Here you can mint up to 12 educational tokens</h3> 
 <h2> <a href="https://scan.mypinata.cloud/ipfs/bafybeih3olry3is4e4lzm7rus5l3h6zrphcal5a7ayfkhzm5oivjro2cp4/#/token/0x9DF4d4eC50132C53D5e4928F2688af26068fa096" target="_blank">Xmas_NFT_4you</a></h2>
 <h4>on <a href="https://www.gopulsechain.com/" target="_blank">PulseChain</a> network as a Christmas card for family and friends</h4>
@@ -316,7 +315,6 @@ function showLoader(show) {
         loader.style.display = 'none';
     }
 }
-
 document.addEventListener('DOMContentLoaded', async () => {
     if (typeof window.ethereum !== 'undefined') {
         const ethereum = window.ethereum;
@@ -340,23 +338,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                     },
                 ],
             });
-
             const networkId = await web3.eth.getChainId();
             if (networkId !== 369) {
                 console.warn('Incorrect network! Expected PulseChain.');
                 return;
             }
-
             const contractAddress = '0x9DF4d4eC50132C53D5e4928F2688af26068fa096';
             const contract = new web3.eth.Contract(contractABI, contractAddress);
             const accounts = await web3.eth.getAccounts();
             const userAddress = accounts[0];
-
             document.getElementById('connectButton').innerHTML = `You are logged in as: <br><b>${userAddress}</b>`;
             document.getElementById('connectButton').addEventListener('click', () => {
                 copyToClipboard(userAddress);
             });
-
             const balance = await web3.eth.getBalance(userAddress);
             const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
             document.getElementById('balance').innerHTML = `<p class="rounded-pill bg-success kasa">Account balance: <br><b>${formattedBalance}</b> PLS</p>`;
