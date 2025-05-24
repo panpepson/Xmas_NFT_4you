@@ -29,11 +29,9 @@
         background-color: #343a40;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
     }
-
     .container:first-of-type {
         padding-top: 13px;
     }
-
     @media (max-width: 768px) {
         body {
             align-items: flex-start; 
@@ -41,7 +39,6 @@
             min-height: 100vh; 
             height: auto; 
         }
-        
         .container:first-of-type {
             padding-top: 15px; 
         }
@@ -88,31 +85,25 @@
     background-color: #343a40;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
 .modal-header {
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
 .modal-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
-
 .close {
     color: white;
 }
-
 .modal-body {
     max-height: 80vh;
     overflow-y: auto;
     text-align: justify;
 }
-
 #whitepaperContent {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     padding: 10px;
 }
-
 #whitepaperContent h1, 
 #whitepaperContent h2, 
 #whitepaperContent h3 {
@@ -121,69 +112,55 @@
     padding-bottom: 10px;
     margin-top: 20px;
 }
-
 #whitepaperContent strong {
     color: #ffd700;
 }
-
 #whitepaperContent ul, 
 #whitepaperContent ol {
     padding-left: 25px;
 }
-
 #whitepaperContent li {
     margin: 8px 0;
 }
-
 #whitepaperContent a {
     color: #007bff;
     text-decoration: none;
 }
-
 #whitepaperContent a:hover {
     text-decoration: underline;
 }
-
 .modal-body::-webkit-scrollbar {
     width: 8px;
 }
-
 .modal-body::-webkit-scrollbar-track {
     background: #343a40;
 }
-
 .modal-body::-webkit-scrollbar-thumb {
     background: rgba(255,255,255,0.2);
     border-radius: 4px;
 }
-
 .modal-body::-webkit-scrollbar-thumb:hover {
     background: rgba(255,255,255,0.3);
 }
 
-
 @media (max-width: 768px) {
     .book-icon {
-        right: 12px;
+      right: 12px;
     }
 }
-
 #mintButton {
 text-align: center;
 width: 60%;
 }
 h1 {
-    margin: 30px;
+    margin: 12px;
 }
-
 .mint {
     width: auto;
 }
-
 #saveAndOpenButton {
     display: none;
 }
-
 .kasa {
     margin-left: 33%;
 }
@@ -210,7 +187,6 @@ h1 {
      width: 160px;
   }
 }
-
 .loader {
 border: 8px solid #f3f3f3;
 border-top: 8px solid #3498db;
@@ -236,11 +212,8 @@ display: none;
 <center>
 <div class="container">
 <div class="row  justify-content-md-center">
-
 <div class="col-md-auto"> 
-
     <div class="header-container">
-
  <div class="telegram-icon"  title="Telegram: Xmas_NFT_4you " ><a href="https://t.me/xmasnft4you" target="_blank"> 
 <svg width="34px" height="34px" stroke-width="1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M21 5L2 12.5L9 13.5M21 5L18.5 20L9 13.5M21 5L9 13.5M9 13.5V19L12.2488 15.7229" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </svg>
@@ -272,7 +245,7 @@ display: none;
 <div class="container">
   <div class="row">
     <div class="col-6">
-     <div class="p-3"><div id="connectButton" class="btn btn-info rounded-pill">Connect your wallet to PulseChain network</div></div>
+     <div class="p-3"><div id="connectButton" class="btn btn-info rounded-pill "><b>Connect  wallet  to PulseChain</b>🎩</div></div>
     </div>
     <div class="col-6">
       <div class="p-3"><div id="balance"></div></div>
@@ -306,8 +279,6 @@ display: none;
 </div>
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
   <script src="pabi.js"></script>
-
 <script src="app.js"></script>
-
 </body>
 </html>

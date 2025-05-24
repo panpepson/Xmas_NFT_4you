@@ -1,9 +1,8 @@
 let currentAccount = null;
-
 async function connectWallet() {
-  const walletBtn = document.getElementById("connectButton");
+ const walletBtn = document.getElementById("connectButton");
 
-  if (!window.ethereum) {
+ if (!window.ethereum) {
     alert("MetaMask is not available.");
     return;
   }
@@ -11,7 +10,7 @@ async function connectWallet() {
   if (currentAccount) {
     // Rozłączenie portfela
     currentAccount = null;
-    walletBtn.innerHTML = "Connect your wallet to PulseChain network";
+    walletBtn.innerHTML = "<b>Connect wallet to PulseChain</b>🎩";
     document.getElementById("balance").innerHTML = "";
     document.getElementById("mintButtonContainer").innerHTML = "";
     document.getElementById("tokenIdDisplay2").innerHTML = "";
@@ -22,8 +21,8 @@ async function connectWallet() {
     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     if (accounts.length > 0) {
       currentAccount = accounts[0];
-      walletBtn.innerHTML = `You are logged in as: <br><b>${shortenAddress(currentAccount)}</b>`;
-      
+      walletBtn.innerHTML = ` 💪😍🤳 <b>${shortenAddress(currentAccount)}</b>`;
+   
       // Dodaj obsługę PulseChain
       await setupPulseChain();
     }
@@ -73,26 +72,21 @@ async function setupPulseChain() {
         throw switchError;
       }
     }
-    
     // Sprawdź czy jesteśmy na PulseChain
     const chainId = await web3.eth.getChainId();
     if (chainId !== 369) { // 369 to decimalny odpowiednik 0x171
       alert("Please switch to PulseChain network");
       return;
     }
-    
     // Pobierz balance
     const balance = await web3.eth.getBalance(currentAccount);
     const formattedBalance = (web3.utils.fromWei(balance, 'ether') * 1).toFixed(2);
-    document.getElementById("balance").innerHTML = `<p class="rounded-pill bg-success kasa">Account balance: <br><b>${formattedBalance}</b> PLS</p>`;
-    
+    document.getElementById("balance").innerHTML = `<p class="rounded-pill bg-success kasa">Account💎balance: <br><b>${formattedBalance}</b> PLS</p>`;
     // Dodaj przycisk mint
     document.getElementById("mintButtonContainer").innerHTML = '<center><button id="mintButton" type="button" class="btn btn-primary bg-dark rounded-pill mint"><h1>Mint Xmas_NFT_4you</h1></button></center>';
-    
     // Inicjalizuj przycisk mint
     setupMintButton();
         Confetti();
-
     // Odśwież listę NFT
       loadUserNFTs();
   } catch (error) {
